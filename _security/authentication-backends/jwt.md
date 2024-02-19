@@ -119,7 +119,7 @@ Name | Description
 `jwt_header` | The HTTP header in which the token is transmitted. This is typically the `Authorization` header with the `Bearer` schema,`Authorization: Bearer <token>`. Default is `Authorization`. Replacing this field with a value other than `Authorization` prevents the audit log from properly redacting the JWT header from audit messages. It is recommended that users only use  `Authorization` when using JWTs with audit logging. 
 `jwt_url_parameter` | If the token is not transmitted in the HTTP header but rather as an URL parameter, define the name of the parameter here.
 `subject_key` | The key in the JSON payload that stores the username. If not set, the [subject](https://tools.ietf.org/html/rfc7519#section-4.1.2) registered claim is used.
-`roles_key` | The key in the JSON payload that stores the user's roles. The value of this key must be a comma-separated list of roles.
+`roles_key` | The key in the JSON payload that stores the user's roles. The value of this key must be a comma-separated list of roles or a json array.
 `jwt_clock_skew_tolerance_seconds` | Sets a window of time, in seconds, to compensate for any disparity between the JWT authentication server and OpenSearch node clock times, thereby preventing authentication failures due to the misalignment. Security sets 30 seconds as the default. Use this setting to apply a custom value.
 
 Because JWTs are self-contained and the user is authenticated at the HTTP level, no additional `authentication_backend` is needed. Set this value to `noop`.
